@@ -1,16 +1,29 @@
-import React from 'react';
+import React, {useState} from 'react';
+import GuessingGame from './GuessingGame';
 
 function App() {
+
+  const [guess, setGuess] = useState('');
+  const [luckyNum, setNum] = useState(0);
+  const [guessCount, setGuessCount] = useState(0);
+
+
+  function generateGuess(newGuess) {
+    setGuess(newGuess);
+    setGuessCount(guessCount + 1);
+  }
+
+  // function generateGuess(newGuess) {
+  //   setGuess(newGuess);
+  // }
+
+  // function generateNumber() {
+  //   setNum(Math.ceil(Math.random() * 100));
+  // } 
+
   return (
     <div style={{ textAlign: 'center' }}>
-      <header>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
+      <GuessingGame onSubmit={generateGuess} luckyNum={luckyNum}  />
     </div>
   );
 }
