@@ -13,14 +13,6 @@ function App() {
     setGuessCount(guessCount + 1);
   }
 
-  // function generateGuess(newGuess) {
-  //   setGuess(newGuess);
-  // }
-
-  // function generateNumber() {
-  //   setNum(Math.ceil(Math.random() * 100));
-  // } 
-
   return (
     <div style={{ textAlign: 'center' }}>
       <GuessingGame onSubmit={generateGuess} luckyNum={luckyNum}  />

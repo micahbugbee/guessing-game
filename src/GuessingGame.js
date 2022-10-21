@@ -12,19 +12,22 @@ function GuessingGame(props) {
     //     localStorage.setItem("luckyNum", luckyNum);
     //     console.log(luckyNum);
     // }, []);
- 
+    
+    localStorage.setItem("Lucky Number", JSON.stringify(luckyNum));
+    localStorage.setItem("Guess Count", JSON.stringify(guessCount));
+
     function generateGuess() {
         setNum(luckyNum);
         props.onSubmit(guess);
             if (guess == luckyNum) {
-                setResult(<p className="alert alert-success">"Congrats! You guessed correctly!"</p>);
+                setResult(<p className="alert alert-success">Congrats! You guessed correctly!</p>);
+                localStorage.removeItem("Lucky Number");
+                localStorage.removeItem("Guess Count");
             } else if (guess < luckyNum) {
-                setGuessCount(guessCount + 1); 
-                localStorage.setItem("guessCount", guessCount);
+                setGuessCount(guessCount + 1);                
                 setResult(<p className="alert alert-warning">Number is too low</p>);
             } else {
                 setGuessCount(guessCount + 1); 
-                localStorage.setItem("guessCount", guessCount);
                 setResult(<p className="alert alert-warning">Number is too high</p>);
             }    
     }
@@ -38,6 +41,8 @@ function GuessingGame(props) {
         setGuess('');
         setGuessCount(0);
         setResult('');
+        localStorage.removeItem("Lucky Number");
+        localStorage.removeItem("Guess Count");
       }
 
 
